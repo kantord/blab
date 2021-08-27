@@ -29,4 +29,5 @@ Modules:
   - 10-Numbers/
 
 Settings:
-    - disable audio files
+    Audio:
+      Enabled: False

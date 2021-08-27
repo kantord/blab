@@ -14,6 +14,7 @@ from librelingo_types import (
     Phrase,
     Language,
     DictionaryItem,
+    TextToSpeechSettings,
 )
 from librelingo_yaml_loader.yaml_loader import (
     load_course,
@@ -176,20 +177,87 @@ class TestLoadCourseMeta(YamlImportTestCase):
             self.fake_values["second_special_character"],
         ]
 
-    def test_returns_correct_settings_audio_files_enabled(self):
-        assert self.result.settings.audio_files_enabled == True
+    def test_returns_correct_settings_audio_settings_enabled(self):
+        assert self.result.settings.audio_settings.enabled == False
 
-    def test_returns_correct_settings_audio_files_disabled(self):
-        new_settings = """
-    Settings:
-        - disable audio files
-        """
+    def test_returns_correct_settings_audio_settings_tts(self):
+        tts_settings_list = self.result.settings.audio_settings.text_to_speech_settings_list
+        assert tts_settings_list == []
 
-        # Append settings to the file
+    def _append_settings_to_file(self, new_settings):
         with open(Path(self.fake_path) / "course.yaml", "a") as f:
             f.write(new_settings)
+
+    def test_returns_correct_settings_audio_disabled(self):
+        self._append_settings_to_file("""
+    Settings:
+        Audio:
+            Enabled: False
+        """)
+
         self.result = load_course(self.fake_path)
-        assert self.result.settings.audio_files_enabled == False
+        assert self.result.settings.audio_settings.enabled == False
+
+        tts_settings_list = self.result.settings.audio_settings.text_to_speech_settings_list
+        assert tts_settings_list == []
+
+    def test_returns_correct_settings_audio_enabled(self):
+        self._append_settings_to_file("""
+    Settings:
+        Audio:
+            Enabled: True
+        """)
+
+        self.result = load_course(self.fake_path)
+        assert self.result.settings.audio_settings.enabled == True
+
+        tts_settings_list = self.result.settings.audio_settings.text_to_speech_settings_list
+        assert tts_settings_list == []
+
+    def test_returns_correct_settings_audio_enabled_no_tts(self):
+        self._append_settings_to_file("""
+    Settings:
+        Audio:
+            Enabled: True
+            TTS: []
+        """)
+
+        self.result = load_course(self.fake_path)
+        assert self.result.settings.audio_settings.enabled == True
+
+        tts_settings_list = self.result.settings.audio_settings.text_to_speech_settings_list
+        assert tts_settings_list == []
+
+    def test_returns_correct_settings_audio_enabled_and_tts(self):
+        self._append_settings_to_file("""
+    Settings:
+        Audio:
+            Enabled: True
+            TTS:
+                - Provider: Polly
+                  Voice: Aditi
+                  Engine: standard
+                - Provider: Polly
+                  Voice: Lupe
+                  Engine: neural
+        """)
+
+        self.result = load_course(self.fake_path)
+        assert self.result.settings.audio_settings.enabled == True
+
+        tts_settings_list = self.result.settings.audio_settings.text_to_speech_settings_list
+        assert tts_settings_list == [
+            TextToSpeechSettings(
+                provider="Polly",
+                voice="Aditi",
+                engine="standard",
+            ),
+            TextToSpeechSettings(
+                provider="Polly",
+                voice="Lupe",
+                engine="neural",
+            )
+        ]
 
     def test_returned_object_has_correct_repository_url(self):
         assert self.result.repository_url == self.fake_values["repository_url"]

@@ -16,6 +16,7 @@ To get a better understanding, we recommend you read the [course basics](README.
   - [Pulling code and branching](#pulling-and-branching)
   - [Pushing code and creating Pull Request](#pushing-and-pr)
   - [Following up with responses](#following-up-pr)
+  - [Updating audio](#updating-audio)
 - [Translating based on an existing course](#translating)
 - [Editing existing courses](#editing-existing)
 
@@ -131,6 +132,18 @@ git push origin HEAD -f
 ```
 
 The `-f` switch is to force push so that the existing commit gets updated. **NOTE:** The `git commit --amend` command amends (or updates) the changes into the last commit you made. So it is important that you keep your changes in a branch on a single commit (if you followed the instructions above you should be fine).
+
+### Updating audio
+
+If you've added or changed any words or phrases in the course, and the course you're editing has text-to-speech (TTS) audio in it, new audio will need to be generated to match your changes.
+
+Right now, the only TTS provider supported by LibreLingo is Amazon Polly. You'll need to install and configure the [AWS CLI](https://aws.amazon.com/cli/) so you can use Polly to generate audio. Then, in the root directory of the LibreLingo repository, run:
+
+```sh
+./scripts/updateAudioForYamlCourse.sh <name of edited course, e.g. spanish-from-english>
+```
+
+If you'd like to simply *see* the audio changes that need to be made without actually performing them, add the `--dry-run` flag. In rare circumstances, you may want to completely regenerate the audio for a course, overwriting everything that's already there. This can be done with the `--destructive` flag -- but use with care!
 
 <a id="translating"></a>
 ## Translating based on an existing course

@@ -27,4 +27,5 @@ Modules:
   - basics/
 
 Settings:
-    - disable audio files
+    Audio:
+      Enabled: False

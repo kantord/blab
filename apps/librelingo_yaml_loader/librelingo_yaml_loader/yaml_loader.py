@@ -12,6 +12,8 @@ from librelingo_types import (
     Skill,
     Word,
     Settings,
+    AudioSettings,
+    TextToSpeechSettings,
 )
 import markdown
 from yaml import safe_load
@@ -332,6 +334,41 @@ def _convert_license(raw_license):
     )
 
 
+def _convert_text_to_speech_settings_list(raw_audio_settings):
+    """
+    Creates an TextToSpeechSettings() object based on the data structure in the YAML
+    file
+    """
+    if "TTS" not in raw_audio_settings:
+        return AudioSettings().text_to_speech_settings_list
+
+    return [
+        TextToSpeechSettings(tts["Provider"], tts["Voice"], tts["Engine"])
+            for tts in raw_audio_settings["TTS"]
+    ]
+
+
+def _convert_audio_settings(raw_settings):
+    """
+    Creates an AudioSettings() object based on the data structure in the YAML
+    file
+    """
+    if "Audio" not in raw_settings:
+        return AudioSettings()
+
+    raw_audio_settings = raw_settings["Audio"]
+
+    if raw_audio_settings["Enabled"]:
+        text_to_speech_settings_list = _convert_text_to_speech_settings_list(raw_audio_settings)
+    else:
+        text_to_speech_settings_list = []
+
+    return AudioSettings(
+        enabled=raw_audio_settings["Enabled"] == "True",
+        text_to_speech_settings_list=text_to_speech_settings_list
+    )
+
+
 def _convert_settings(data):
     if "Settings" not in data:
         return Settings()
@@ -339,7 +376,7 @@ def _convert_settings(data):
     raw_settings = data["Settings"]
 
     return Settings(
-        audio_files_enabled="disable audio files" not in raw_settings,
+        audio_settings=_convert_audio_settings(raw_settings),
     )
 
 

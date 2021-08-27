@@ -1,7 +1,59 @@
 from collections import namedtuple
 
+class TextToSpeechSettings(
+    namedtuple(
+        "TextToSpeechSettings",
+        [
+            "provider",
+            "voice",
+            "engine",
+        ],
+        defaults=["Polly", "Lupe", "standard"]
+    )
+):
+    """
+    Settings about how to use TTS to generate audios
 
-class Settings(namedtuple("Settings", ["audio_files_enabled"], defaults=[True])):
+    ### Usage example:
+
+    ```python
+    TextToSpeechSettings(
+        provider="Polly",
+        voice="Aditi",
+        engine="standard"
+    )
+    ```
+    """
+
+    pass
+
+class AudioSettings(
+    namedtuple(
+        "AudioSettings",
+        [
+            "enabled",
+            "text_to_speech_settings_list",
+        ],
+        defaults=[False, []]
+    )
+):
+    """
+    Settings for audio in a course
+
+    ### Usage example:
+
+    ```python
+    AudioSettings(
+        enabled=True,
+        text_to_speech_settings_list=[TextToSpeechSettings()]
+    )
+    ```
+    """
+
+    pass
+
+
+class Settings(namedtuple("Settings", ["audio_settings"], defaults=[AudioSettings()])):
     """
     Settings for a course
 
@@ -12,9 +64,6 @@ class Settings(namedtuple("Settings", ["audio_files_enabled"], defaults=[True]))
     """
 
     pass
-
-
-default_settings = Settings()
 
 
 class Course(
@@ -30,7 +79,7 @@ class Course(
             "repository_url",
             "settings",
         ],
-        defaults=[default_settings],
+        defaults=[Settings()],
     )
 ):
     """

@@ -8,17 +8,17 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-librelingo-types = "^3.0.0"
+librelingo-types = {path = "../librelingo_types", develop = true}
 librelingo-utils = "^2.4.0"
 python-slugify = "^4.0.1"
-librelingo-yaml-loader = "^1.0.0"
+librelingo-yaml-loader = {path = "../librelingo_yaml_loader", develop = true}
 editdistance = "^0.5.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
 pytest-watch = "^4.2.0"
 pyfakefs = "^4.3.3"
-librelingo-fakes = {path = "../librelingo_fakes", develop = false}
+librelingo-fakes = {path = "../librelingo_fakes", develop = true}
 pytest-mock = "^3.5.1"
 pydoc-markdown = "^3.10.0"
 

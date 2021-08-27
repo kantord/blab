@@ -7,12 +7,12 @@ license = "GPLv3"
 
 [tool.poetry.dependencies]
 python = "^3.8"
-librelingo-yaml-loader = "^1.5.0"
-librelingo-utils = "^2.4.0"
+librelingo-yaml-loader = {path = "../librelingo_yaml_loader", develop = true}
+librelingo-utils = {path = "../librelingo_utils", develop = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
-librelingo-fakes = "^3.0.0"
+librelingo-fakes = {path = "../librelingo_fakes", develop = true}
 pytest-mock = "^3.5.1"
 
 [build-system]

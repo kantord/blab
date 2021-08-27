@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "librelingo_types"
-version = "3.0.1"
+version = "3.0.3"
 description = "Data types to be used in Python packages for LibreLingo"
 authors = ["Dániel Kántor <git@daniel-kantor.com>"]
 license = "GPLv3"
