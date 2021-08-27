@@ -6,7 +6,6 @@ authors = ["Dániel Kántor <git@daniel-kantor.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-mkdocs-mermaid2-plugin = "^0.5.1"
 
 [tool.poetry.dev-dependencies]
 librelingo-yaml-loader = { path = "./apps/librelingo_yaml_loader/", develop = true }
@@ -18,8 +17,6 @@ librelingo-types = { path = "./apps/librelingo_types", develop = true }
 pytest = "^6.2.2"
 pytest-mock = "^3.5.1"
 pytest-watch = "^4.2.0"
-mkdocs-material = "^7.0.3"
-mkdocs = "^1.1.2"
 black = "^21.6b0"
 mypy = "^0.910"
 types-python-slugify = "^0.1.1"

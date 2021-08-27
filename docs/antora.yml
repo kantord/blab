@@ -1,0 +1,6 @@
+name: docs-main
+version: latest
+start_page: index.adoc
+nav:
+- modules/ROOT/nav.adoc
+- modules/articles/nav.adoc

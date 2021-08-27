@@ -1,0 +1,98 @@
+= LibreLingo Documentation on Challenge
+
+As they study using LibreLingo, users respond to a series of tasks or questions called **Challenge**s.
+
+Challenges are not configured directly, but link:skill.md#how-skills-are-taught-to-the-user[automatically generated from Skill configuration].
+
+'''
+
+*Confused?*
+https://github.com/kantord/LibreLingo/discussions[Ask people] on GitHub Discussions.
+
+'''
+
+*Table of Contents:*
+
+* <<challenge-order,Challenge order>>
+* <<cards-challenge,Cards challenge>>
+* <<short-input-challenge,Short input challenge>>
+* <<options-challenge,Options challenge>>
+* <<chips-challenge,Chips challenge>>
+* <<listening-challenge,Listening challenge>>
+
+== Challenge order
+
+Within a skill, the order of words and phrases is random, but certain challenge types always come before other types. This is denoted by the _Priority_ values listed under each challenge type. First priority challenges come before second priority challenges, which come before third priority challenges.
+
+== Cards challenge
+
+image::/docs/screenshots/cards-challenge.png[Text asks the user: which of these is "river"?. Below this heading are three cards. Each card contains a Spanish word and corresponding image. In the center the correct choice (río) is selected.]
+
+* _Generated from:_ `New words` only
+* _Task:_ translation, multiple-choice
+* _Direction:_ source \-> target only
+* _Properties used:_ `Word`, `Translation`, `Images` -- both of the asked word and of two or three other words in the same skill
+* _Mini-dictionary available:_ No
+* _Priority_: First
+
+In this challenge type, the user is presented with a word in their source language, and three (four on mobile) cards to choose from. Each card contains a target language word and a matching image, the latter of which functions as a big hint since the user may have never seen this target language word before.
+
+Note that for each card, a random image is selected from the word's `Images` array.
+
+== Short input challenge
+
+image::/docs/screenshots/short-input-challenge.png[Text asks the user to type the word "river" in Spanish. Below this heading is a text box, and underneath that a set of buttons to insert Spanish-specific characters. At right is an image of a river.]
+
+* _Generated from:_ `New words` only
+* _Task:_ translation, free-form
+* _Direction:_ source \-> target only
+* _Properties used:_ `Word`, `Translation`, `Images`
+* _Mini-dictionary available:_ Yes
+* _Priority_: Second
+
+In this challenge type, the user is presented with a word in their source language, and a text box in which to input the translation into the target language. There is also a random image from the `Images` array on the right, but since this challenge asks for the target language, the image does not give the user any additional information. If the user does need a hint, the mini-dictionary is available for this challenge.
+
+== Options challenge
+
+image::/docs/screenshots/options-challenge.png[Text asks the user which one of the options is "Let's go to the beach!". Below this question are three Spanish sentences with radio buttons to their left.]
+
+* _Generated from:_ `Phrases` only
+* _Task:_ translation, multiple-choice
+* _Direction:_ source \-> target only
+* _Properties used:_ `Phrase`, `Translation` both of the asked phrase and two other phrases in the same skill
+* _Mini-dictionary available:_ No
+* _Priority_: First
+
+In this challenge type, the user is presented with a phrase in their source language, and three options from which they must choose the correct translation into the target language. There are no hints available.
+
+== Chips challenge
+
+image::/docs/screenshots/chips-challenge.png[Text instructs the user to translate the phrase "Let's go to the beach!". At the bottom of the image, there is a group of draggable Spanish words.]
+
+* _Generated from:_ `Phrases` only
+* _Task:_ translation, set of words provided
+* _Direction:_ Both directions: source \-> target, target \-> source
+* _Properties used:_
+ ** If source \-> target: `Phrase`, `Translation`, `Alternative translations`; `Translation` and `Alternative translations` of other phrases anywhere in the course
+ ** If target \-> source: `Translation`, `Phrase`, `Alternative versions`; `Phrase` and `Alternative versions` of other phrases anywhere in the course
+* _Mini-dictionary available:_ Yes
+* _Priority_: Third
+
+In this challenge type, the user is presented with a phrase in one language and a set of words in the other language. This set will always include all words of the `Translation` field. The user's task is to use this words as "building blocks" to create _any_ acceptable translation for the phrase they've been presented with.
+
+The mini-dictionary is available to give hints about individual words but there are no hints about grammar or sentence structure.
+
+The chips will never include exact duplicates of each other.
+
+== Listening challenge
+
+image::/docs/screenshots/listening-challenge.png[Text instructs the user: "Type what you hear". Below this heading is a text box, and underneath that a set of buttons to insert Spanish-specific characters.]
+
+* _Generated from:_ `New words` and `Phrases`
+* _Task:_ transcription
+* _Direction:_ N/A, target language only
+* _Properties used:_ `Word` or `Phrase`
+* _Mini-dictionary available:_ No
+* _Priority_: Second
+
+In this challenge type, the user is played audio of a word or phrase in the target language, and is presented with a text box to transcribe the audio (still in the target language). The user can re-listen to the audio, if necessary.

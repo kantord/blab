@@ -1,0 +1,14 @@
+site:
+  title: LibreLingo Documentation
+  url: https://librelingo.app/docs/
+  start_page: docs-main::index.adoc
+content:
+  sources:
+  - url: ../../
+    start_path: docs/
+    branches:
+      - HEAD
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true

@@ -1,0 +1,14 @@
+{
+  "name": "docs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "rm -rf ./build && antora --fetch --stacktrace ./antora-playbook.yml",
+    "start": "npx serve './build/site/'"
+  },
+  "dependencies": {
+    "@antora/cli": "^2.3.4",
+    "@antora/site-generator-default": "^2.3.4",
+    "bulma": "0.9.1"
+  }
+}

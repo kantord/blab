@@ -1,4 +1,4 @@
-# Contributing
+= Contributing
 
 This project has 2 main components
 
@@ -8,14 +8,14 @@ This project has 2 main components
 
 The site is statically built and hosted on GitHub pages, therefore there's no real "backend" or API.
 
-## Getting started
+== Getting started
 
 Please check out our development documentation for instructions on
-[setting up the development environment.](https://librelingo.app/docs/#setting-up-the-development-environment)
+https://librelingo.app/docs/#setting-up-the-development-environment[setting up the development environment.]
 
-### Pick an issue
+=== Pick an issue
 
 Here are some tips:
 
-* [Good first issues](https://github.com/kantord/LibreLingo/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
-* [Isssues that require some extra attention](https://github.com/kantord/LibreLingo/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+* https://github.com/kantord/LibreLingo/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22[Good first issues]
+* https://github.com/kantord/LibreLingo/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22[Isssues that require some extra attention]
