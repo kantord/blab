@@ -25,6 +25,7 @@ from librelingo_types import (
     License,
     Module,
     Phrase,
+    Character,
     Settings,
     Skill,
     TextToSpeechSettings,
@@ -178,6 +179,24 @@ def _solution_from_yaml(raw_object, solution_key: str, alternatives_key: str) ->
     return [solution, *_alternatives_from_yaml(raw_object, alternatives_key)]
 
 
+def _convert_character(raw_character) -> Character:
+    """
+    Converts a YAML character into a Character() object
+    """
+    return Character(
+        character=raw_character["Character"],
+        transliteration=raw_character["Transliteration"],
+        ipa_pronounciation=raw_character["IPA"]
+    )
+
+
+def _convert_characters(raw_characters: List) -> List[Character]:
+    """
+    Convert each YAML character definition into Character() objects
+    """
+    return list(map(_convert_character, raw_characters))
+
+
 def _convert_word(raw_word) -> Word:
     """
     Converts a YAML word definition into a Word() object
@@ -196,7 +215,7 @@ def _convert_word(raw_word) -> Word:
     )
 
 
-def _convert_words(raw_words: List[Word]) -> List[Word]:
+def _convert_words(raw_words: List) -> List[Word]:
     """
     Converts each YAML word definition into Word() objects
     >>> _convert_words([
@@ -254,7 +273,7 @@ def _convert_phrase(raw_phrase) -> Phrase:
         ) from key_error
 
 
-def _convert_phrases(raw_phrases) -> List[Phrase]:
+def _convert_phrases(raw_phrases: List) -> List[Phrase]:
     """
     Converts each YAML phrase definition into Phrase() objects
     """
@@ -359,6 +378,7 @@ def _load_skill(path: Path, course: Course) -> Skill:
         jsonschema.validate(data, _get_skill_schema(course))
         introduction = _load_introduction(str(path).replace(".yaml", ".md"))
         skill = data["Skill"]
+        characters = data["New Characters"]
         words = data["New words"]
         phrases = data["Phrases"]
     except TypeError as type_error:
@@ -389,6 +409,7 @@ def _load_skill(path: Path, course: Course) -> Skill:
     skill_id = skill["Id"]
     phrases = _convert_phrases(phrases)
     words = _convert_words(words)
+    characters = _convert_characters(character)
 
     _run_skill_spellcheck(phrases, words, course)
 
@@ -398,6 +419,7 @@ def _load_skill(path: Path, course: Course) -> Skill:
         id=skill_id,
         words=words,
         phrases=phrases,
+        characters=characters,
         image_set=skill["Thumbnails"] if "Thumbnails" in skill else [],
         dictionary=_convert_mini_dictionary(data, course)
         + _convert_two_way_dictionary(data),
