@@ -112,7 +112,7 @@ Modules:
   - `License > Name`: Full license name under which your course is made available. In most cases, it's ok to keep it as is.
   - `License > Short name`: Short name for the license, e.g., `CC BY-SA 4.0`
   - `License > Link`: URL to reach the full text of the license, e.g., `https://creativecommons.org/licenses/by-sa/4.0/legalcode`
-- `Special characters`: An array of special characters that might not be present on a typical English keyboard.
+- `Special characters`: An array of special characters that might not be present on a typical English keyboard. Note that this is separate from `New Characters` included inside some skills.
 
 **`Modules`** has a list of module directory names followed by a `/`.
 
