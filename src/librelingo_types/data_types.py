@@ -215,6 +215,7 @@ class Skill(
             "id",
             "words",
             "phrases",
+            "characters",
             "image_set",
             "dictionary",
             "introduction",
@@ -237,6 +238,7 @@ class Skill(
         id="3adc78da-ea42-4ecd-9e3d-2e0986a3b914",
         words=[word1, word2, word3],
         phrases=[phrases1, phrases2, phrases3],
+        characters=[character1, character2, character3]
         image_set=["cat1", "dog2", "horse1"],
         dictionary=[dict_item_1, dict_item_2, dict_item_3, dict_item_4],
         introduction="My *markdown* text",
@@ -321,6 +323,35 @@ class Phrase(
 
     pass
 
+class Character(
+    namedtuple("Character", ["character", "transliteration", "ipa_pronounciation"])
+):
+    """
+    A new character taught in a LibreLingo skill. These are used for teaching 
+    languages which use a different script or characters than what the learner's
+    source language uses. These are taught in lessons using the transliteration(s)
+    and pronounciation of the character and it's sounds.
+
+    A character in LibreLingo could either be a single character, or a combination
+    of characters, depending on what makes sense for that specific language. There
+    should be two Character entries if a letter has both lowercase and uppercase.
+
+    ipa_pronounciation is how the character is written in the Internation Phonetic
+    Alphabet (IPA). It is a list as in many languages a character can represent 
+    several sounds. Knowing this can help with pronounciation or differentiating 
+    similar characters and sound blends. Read the Wikipedia article on 
+    https://en.wikipedia.org/wiki/International_Phonetic_Alphabet. 
+
+    A long sound macron on an 'a' in Te Reo Māori
+    >>> Character("ā", ["aa"], ["/aː/"])
+    Character(character='ā', transliteration=['aa'], ipa_pronounciation=['/aː/'])
+
+    The Г character in Ukranian (which uses the Cyrillic script).
+    >>> Character("Г", ["H"], ["/ɦ/"])
+    Character(character='Г', transliteration=['H'], ipa_pronounciation=['/ɦ/'])
+    """
+    
+    pass
 
 class DictionaryItem(
     namedtuple("DictionaryItem", ["word", "definition", "is_in_target_language"])

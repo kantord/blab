@@ -27,6 +27,30 @@
             },
             "required": ["Id", "Name"]
         },
+        "New Characters": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Character": {
+                        "type": "string"
+                    },
+                    "Transliteration": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "IPA": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": ["Character", "Transliteration"]
+            }
+        },
         "New words": {
             "type": "array",
             "items": {

@@ -110,6 +110,16 @@ Two-way-dictionary:
   - the man: L'homme
 ```
 
+Additionally, characters which are unfamiliar to the person learning the new language can be included in skills. These are typically put above `New Words` in a `(skill_name).yaml` file.
+
+```yaml
+New Characters:
+
+  - Character: ç
+    Transliteration: s
+    IPA: /ç/
+```
+
 ### Data breakdown
 
 **`Skill`** has information about the skill.
@@ -117,6 +127,12 @@ Two-way-dictionary:
 - `Skill > Name`: The human-friendly name of the skill.
 - `Skill > Id`: The ID of the course. **NOTE:** This should be unchanged if you're translating or editing an existing course. Only if you're creating a new course should this have a unique [UUID v4](https://www.uuidgenerator.net/version4) string. Details for which you can find [here](creating-courses.md).
 - `Skill > Thumbnails`: A list of filenames of the thumbnails to be used on the course page to give an idea of the skill. A list of available files can be found on [`apps/web/static/images/`](https://github.com/LibreLingo/LibreLingo/tree/main/apps/web/static/images). The names should be used without extension and without `_tiny` or `_tinier` parts, e.g., `banana2_tinier.jpg` should be written as `banana2`.
+
+**`New Characters`** has a list of new characters that the lesson teaches. This is only used for languages which use different characters than what the learner already knows. A character in LibreLingo can be a single character or a sound blend. These are currently not implemented in the web app.
+
+- `Character`: The new character. Ensure it has the correct unicode value so it displays correctly.
+- `Transliteration`: A list of transliterations of this character in the source language's script. The first one will be taught.
+- `IPA`: A list of pronounciations in IPA (Internation Phonetic Language) format. (optional)
 
 **`New words`** has a list of new words that the lesson teaches.
 
