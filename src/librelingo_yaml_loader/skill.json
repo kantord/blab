@@ -42,7 +42,10 @@
                         }
                     },
                     "IPA": {
-                        "type": "string"
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
                     }
                 },
                 "required": ["Character", "Transliteration"]

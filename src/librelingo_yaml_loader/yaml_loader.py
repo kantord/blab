@@ -182,17 +182,34 @@ def _solution_from_yaml(raw_object, solution_key: str, alternatives_key: str) ->
 def _convert_character(raw_character) -> Character:
     """
     Converts a YAML character into a Character() object
+
+    >>> _convert_character(
+    ...     {'Character': "Г", 'Tranliteration': ["H"], 'IPA': ["/ɦ/"]}
+    ... )
+    Character(character='Г', transliteration=['H'], ipa_pronounciation=['/ɦ/'])
     """
     return Character(
         character=raw_character["Character"],
         transliteration=raw_character["Transliteration"],
-        ipa_pronounciation=raw_character["IPA"]
+        ipa_pronounciation=raw_character["IPA"] if "IPA" in raw_character else None,
     )
 
 
 def _convert_characters(raw_characters: List) -> List[Character]:
     """
     Convert each YAML character definition into Character() objects
+
+    >>> _convert_characters(
+    ...     {'Character': "Г", 'Tranliteration': ["H"], 'IPA': ["/ɦ/"]},
+    ...     {'Character': "Д", 'Tranliteration': ["D"], 'IPA': ["/d/", "/dʲ/", "/ɟː/", "/d͡z/", "/d͡zʲ/", "/d͡ʒ/"]},
+    ... )
+    [Character(character='Г', 
+            transliteration=['H'], 
+            ipa_pronounciation=['/ɦ/']),
+    Character(character='Д', 
+            transliteration=['D'], 
+            ipa_pronounciation=['/d/', '/dʲ/', '/ɟː/', '/d͡z/', '/d͡zʲ/', '/d͡ʒ/']),
+    ]
     """
     return list(map(_convert_character, raw_characters))
 

@@ -131,8 +131,8 @@ New Characters:
 **`New Characters`** has a list of new characters that the lesson teaches. This is only used for languages which use different characters than what the learner already knows. A character in LibreLingo can be a single character or a sound blend. These are currently not implemented in the web app.
 
 - `Character`: The new character. Ensure it has the correct unicode value so it displays correctly.
-- `Transliteration`: The most common transliteration of this character in the source language's script.
-- `IPA`: The pronounciation in IPA (Internation Phonetic Language) format. (optional)
+- `Transliteration`: A list of transliterations of this character in the source language's script. The first one will be taught.
+- `IPA`: A list of pronounciations in IPA (Internation Phonetic Language) format. (optional)
 
 **`New words`** has a list of new words that the lesson teaches.
 

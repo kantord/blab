@@ -329,7 +329,7 @@ class Character(
     """
     A new character taught in a LibreLingo skill. These are used for teaching 
     languages which use a different script or characters than what the learner's
-    source language uses. These are taught in lessons using the transliteration
+    source language uses. These are taught in lessons using the transliteration(s)
     and pronounciation of the character and it's sounds.
 
     A character in LibreLingo could either be a single character, or a combination
@@ -337,17 +337,18 @@ class Character(
     should be two Character entries if a letter has both lowercase and uppercase.
 
     ipa_pronounciation is how the character is written in the Internation Phonetic
-    Alphabet (IPA). Knowing this can help with pronounciation or differentiating 
+    Alphabet (IPA). It is a list as in many languages a character can represent 
+    several sounds. Knowing this can help with pronounciation or differentiating 
     similar characters and sound blends. Read the Wikipedia article on 
-    https://en.wikipedia.org/wiki/International_Phonetic_Alphabet.
+    https://en.wikipedia.org/wiki/International_Phonetic_Alphabet. 
 
     A long sound macron on an 'a' in Te Reo Māori
-    >>> Character("ā", "aa", "/aː/")
-    Character(character='ā', transliteration='aa', ipa_pronounciation='/aː/')
+    >>> Character("ā", ["aa"], ["/aː/"])
+    Character(character='ā', transliteration=['aa'], ipa_pronounciation=['/aː/'])
 
     The Г character in Ukranian (which uses the Cyrillic script).
-    >>> Character("Г", "H", "/ɦ/")
-    Character(character='Г', transliteration='H', ipa_pronounciation='/ɦ/')
+    >>> Character("Г", ["H"], ["/ɦ/"])
+    Character(character='Г', transliteration=['H'], ipa_pronounciation=['/ɦ/'])
     """
     
     pass
