@@ -210,9 +210,7 @@ The mascot is designed by [@almostdesigner](https://github.com/almostdesigner).
 ### Contributors
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-92-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-93-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -341,6 +339,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/beanrill"><img src="https://avatars.githubusercontent.com/u/47017874?v=4?s=100" width="100px;" alt="Bianca Davies"/><br /><sub><b>Bianca Davies</b></sub></a><br /><a href="https://github.com/kantord/LibreLingo/commits?author=beanrill" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ggadt"><img src="https://avatars.githubusercontent.com/u/179806712?v=4?s=100" width="100px;" alt="ggadt"/><br /><sub><b>ggadt</b></sub></a><br /><a href="https://github.com/kantord/LibreLingo/commits?author=ggadt" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
