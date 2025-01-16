@@ -4,3 +4,5 @@
 courses
 .all-contributorsrc
 apps/librelingo-web/out
+
+.vscode
